@@ -1,0 +1,41 @@
+{% extends 'store/base.html' %}
+
+<!--body-->
+{% block content%}
+<div class="container-fluid mt-3">
+  <div class="row">
+    <div class="col-lg-2 mx-auto">
+      <b>Genre</b>
+      <a href="/" class="list-group-item active">AllBooks</a>
+      {% for category in categories %}
+      <a href="/?category={{category.id}}" class="list-group-item active"
+        >{{category.name}}</a
+      >
+      {% endfor %}
+    </div>
+
+    <div id="books" class="col-lg-9 mx-auto">
+      <div class="row mx-auto">
+        {% for book in books %}
+        <div class="card mx-auto" style="width: 200px">
+          <img
+            src="{{book.cover_image.url}}"
+            class="card-img-top"
+            alt="..."
+            class="w-100"
+          />
+          <div class="card-body">
+            <h5 class="card-title">{{book.title}}</h5>
+            <p class="card-text">{{book.author}}</p>
+            <p class="card-number">{{book.price}}</p>
+            <a href="#" class="btn btn-primary">Add to cart</a>
+            <a href="#" class="btn btn-primary">PDF</a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    {% endblock %}
+  </div>
+</div>
